@@ -8,8 +8,6 @@ import java.util.ArrayList;
  */
 public class Mazo
 {
-    // instance variables - replace the example below with your own
-    private int x;
     // Coleccion que almacena todas las cartas de la baraja española;
     private ArrayList<Carta> mazo;
 
@@ -25,15 +23,15 @@ public class Mazo
                     case 8:
                     Carta sota = new Carta(10, palo);
                     mazo.add(sota);
-                    break;
+                    continue;
                     case 9:
                     Carta caballo = new Carta(11, palo);
                     mazo.add(caballo);
-                    break;
+                    continue;
                     case 10:
                     Carta rey = new Carta(12, palo);
                     mazo.add(rey);
-                    break;
+                    continue;
                     default:
                     Carta carta = new Carta(valor, palo);
                     mazo.add(carta);
