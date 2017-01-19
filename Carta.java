@@ -9,7 +9,7 @@ public class Carta
 {
     // Atributo que almacena el valor de la carta
     private int valor;
-    // Atributo que almacena el palo al que corresponde la carta
+    // Atributo que almacena el palo al que corresponde la carta: 0 es oros, 1 es copas, 2 es espadas y 3 es bastos.
     private int palo;
     /**
      * Constructor for objects of class Carta.
