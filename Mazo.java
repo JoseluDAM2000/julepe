@@ -1,22 +1,22 @@
 import java.util.ArrayList;
-
+import java.util.Random;
+import java.util.Collections;
 /**
- * Write a description of class Mazo here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class Mazo
 {
     // Coleccion que almacena todas las cartas de la baraja española;
     private ArrayList<Carta> mazo;
-
+    // Variable que nos permite llamar a un numero aleatorio.
+    private Random aleatorio;
     /**
-     * Constructor for objects of class Mazo
+     * Constructor para objetos de la clase Mazo
      */
     public Mazo()
     {
         mazo = new ArrayList<Carta>();
+        aleatorio = new Random();
         for(int palo = 0; palo < 4; palo++){
             for(int valor = 1; valor < 11; valor++){
                 switch(valor){
@@ -41,15 +41,35 @@ public class Mazo
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Muestra el contenido del mazo.
      */
     public void verCartasDelMazo()
     {
         for(Carta carta: mazo){
             System.out.println(carta);
+        }
+    }
+    
+    /**
+     * Mezcla las cartas existentes 
+     * en el mazo de manera aleatoria.
+     */
+    public void barajarMal()
+    {
+        int posicionTemporal = 0;
+        int cartasBarajadas = 0;
+        Carta[] mazoAyuda = new Carta[mazo.size()];
+        ArrayList posicionesOcupadas = new ArrayList();
+        while(cartasBarajadas < mazo.size()){
+            posicionTemporal = aleatorio.nextInt(mazo.size());
+            if(!posicionesOcupadas.contains(posicionTemporal)){
+                mazoAyuda[posicionTemporal] = mazo.get(cartasBarajadas);
+                posicionesOcupadas.add(posicionTemporal);
+                cartasBarajadas++;
+            }
+        }
+        for(int i = 0; i < mazo.size(); i++){
+            mazo.set(i, mazoAyuda[i]);
         }
     }
 }
