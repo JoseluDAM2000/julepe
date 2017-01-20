@@ -72,4 +72,14 @@ public class Mazo
             mazo.set(i, mazoAyuda[i]);
         }
     }
+    
+    /**
+     * Metodo que devuelve la primera carta del mazo;
+     */
+    public Carta sacarCarta()
+    {
+        Carta cartaSacada = mazo.get(0);
+        mazo.remove(0);
+        return cartaSacada;
+    }
 }
