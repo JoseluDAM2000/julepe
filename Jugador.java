@@ -48,4 +48,19 @@ public class Jugador
             }
         }
     }
+
+    /**
+     * Devuelve la cantidad de cartas 
+     * que tiene el jugador en mano.
+     */
+    public int cartasEnMano()
+    {
+        int cartasEnMano = 0;
+        for(Carta carta : mano){
+            if(carta != null){
+                cartasEnMano++;
+            }
+        }
+        return cartasEnMano;
+    }
 }
