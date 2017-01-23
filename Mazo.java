@@ -78,8 +78,10 @@ public class Mazo
      */
     public Carta sacarCarta()
     {
-        Carta cartaSacada = mazo.get(0);
-        mazo.remove(0);
+        Carta cartaSacada = null;
+        if (mazo.size() > 0){
+            cartaSacada = mazo.remove(0);            
+        }
         return cartaSacada;
     }
 }
