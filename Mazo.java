@@ -54,7 +54,7 @@ public class Mazo
      * Mezcla las cartas existentes 
      * en el mazo de manera aleatoria.
      */
-    public void barajarMal()
+    public void barajar()
     {
         int posicionTemporal = 0;
         int cartasBarajadas = 0;
@@ -84,4 +84,8 @@ public class Mazo
         }
         return cartaSacada;
     }
+    
+    /**
+     * 
+     */
 }

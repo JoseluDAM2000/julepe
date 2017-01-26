@@ -63,4 +63,12 @@ public class Jugador
         }
         return cartasEnMano;
     }
+    
+    /**
+     * Devuelve el nombre del jugador.
+     */
+    public String getNombre()
+    {
+        return nombre;
+    }
 }
