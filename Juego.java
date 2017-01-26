@@ -2,10 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Write a description of class Juego here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class Juego
 {
@@ -13,27 +10,23 @@ public class Juego
     private Mazo mazo;
     // Atributo que almacena la lista de posibles nombres.
     private ArrayList<String> nombres;
-    // Array que almacena los jugadores
+    // Array que almacena los jugadores.
     private Jugador[] jugadores;
-    // Atributo que almacena el palo que pinta
+    // Atributo que almacena el palo que pinta.
     private int paloQuePinta;
-    // Array
-    private String[] nombreJugadores;
 
     /**
-     * Constructor for objects of class Juego
+     * Constructor for objects of class Juego.
      */
     public Juego(int cantidadJugadores)
     {
         nombres = new ArrayList<String>();
         crearListaNombres();
         Random aleatorio = new Random();
-        nombreJugadores = new String[cantidadJugadores];
         jugadores = new Jugador[cantidadJugadores];
         for(int i = 0; i < cantidadJugadores; i++){
             int index = aleatorio.nextInt(nombres.size());
-            nombreJugadores[i] = nombres.remove(index);
-            Jugador jugador = new Jugador(nombreJugadores[i]);
+            Jugador jugador = new Jugador(nombres.remove(index));
             jugadores[i] = jugador;
         }
         mazo = new Mazo();
@@ -42,14 +35,15 @@ public class Juego
     }
 
     /**
-     * 
+     * Muestra las cartas del jugador especificado por parametro.
      */
     public void verCartasJugador(String nombreJugador)
     {
         int contador = 0;
         boolean buscando = true;
         while(contador < jugadores.length && buscando){
-            if(nombreJugadores[contador].equals(nombreJugador)){
+            Jugador jugador = jugadores[contador];
+            if(jugador.getNombre().equals(nombreJugador)){
                 jugadores[contador].verCartasJugador();
                 buscando = false;
             }
@@ -58,7 +52,7 @@ public class Juego
     }
 
     /**
-     * 
+     * Reparte 5 cartas a todos los jugadores.
      */
     public void repartir()
     {
