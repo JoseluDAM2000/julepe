@@ -1,3 +1,4 @@
+import java.util.Random;
 
 /**
  * Write a description of class Jugador here.
@@ -73,7 +74,8 @@ public class Jugador
     }
 
     /**
-     * 
+     * Devuelve carta indicada por parametro, en 
+     * caso de no tener la carta indicada devuelve null.
      */
     public Carta tirarCarta(String cartaATirar)
     {
@@ -91,6 +93,25 @@ public class Jugador
                 }
                 contador++;
             }
+        }
+        return cartaADevolver;
+    }
+    
+    /**
+     * Devuelve una carta aleatoria de la mano, en 
+     * caso de no tener cartas devuelve null.
+     */
+    public Carta tirarCartaAleatoria()
+    {
+        Carta cartaADevolver = null;
+        if(cartasEnMano() != 0){
+            Random aleatorio = new Random();
+            while(cartaADevolver == null){
+                int posicion = aleatorio.nextInt(mano.length);
+                cartaADevolver = mano[posicion];
+                mano[posicion] = null;
+            }
+            System.out.println("El jugador " + nombre + " ha tirado la carta " + cartaADevolver);
         }
         return cartaADevolver;
     }
