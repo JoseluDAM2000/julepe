@@ -63,12 +63,35 @@ public class Jugador
         }
         return cartasEnMano;
     }
-    
+
     /**
      * Devuelve el nombre del jugador.
      */
     public String getNombre()
     {
         return nombre;
+    }
+
+    /**
+     * 
+     */
+    public Carta tirarCarta(String cartaATirar)
+    {
+        Carta cartaADevolver = null;
+        if(cartasEnMano() != 0){
+            int contador = 0;
+            boolean buscando = true;
+            while(contador < mano.length && buscando){
+                Carta carta = mano[contador];
+                if(carta != null && carta.toString().equals(cartaATirar)){
+                    cartaADevolver = carta;
+                    mano[contador] = null;
+                    buscando = false;
+                    System.out.println("El jugador " + nombre + " ha tirado la carta " + cartaADevolver);
+                }
+                contador++;
+            }
+        }
+        return cartaADevolver;
     }
 }
