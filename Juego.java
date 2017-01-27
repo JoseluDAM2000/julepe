@@ -18,26 +18,34 @@ public class Juego
     /**
      * Constructor for objects of class Juego.
      */
-    public Juego(int cantidadJugadores)
+    public Juego(int cantidadJugadores, String jugadorActual)
     {
         nombres = new ArrayList<String>();
         crearListaNombres();
         Random aleatorio = new Random();
         jugadores = new Jugador[cantidadJugadores];
-        for(int i = 0; i < cantidadJugadores; i++){
+        Jugador usuario = new Jugador(jugadorActual);
+        jugadores[0]= usuario;
+        String nombresActuales = "";
+        for(int i = 1; i < cantidadJugadores; i++){
             int index = aleatorio.nextInt(nombres.size());
-            Jugador jugador = new Jugador(nombres.remove(index));
+            String nombreActual = nombres.remove(index);
+            Jugador jugador = new Jugador(nombreActual);
             jugadores[i] = jugador;
+            nombresActuales += nombreActual + " ";
         }
         mazo = new Mazo();
         mazo.barajar();
         paloQuePinta = 0;
+        System.out.println("Bienvenido " + jugadorActual);
+        System.out.println("Tus rivales en esta partida serán");
+        System.out.println(nombresActuales);
     }
 
     /**
      * Muestra las cartas del jugador especificado por parametro.
      */
-    public void verCartasJugador(String nombreJugador)
+    public void hacerTrampasYVerCartasDeJugador(String nombreJugador)
     {
         int contador = 0;
         boolean buscando = true;
@@ -54,7 +62,7 @@ public class Juego
     /**
      * Reparte 5 cartas a todos los jugadores.
      */
-    public void repartir()
+    public int repartir()
     {
         for(Jugador jugador : jugadores){
             for(int i = 0; i < 5; i++){
@@ -65,6 +73,10 @@ public class Juego
                 }
             }
         }
+        System.out.println("Pintan " + palo(paloQuePinta));
+        System.out.println("Tus cartas son:");
+        verCartasJugadorHumano();
+        return paloQuePinta;
     }
 
     /**
@@ -82,5 +94,36 @@ public class Juego
         nombres.add("Esmeralda");
         nombres.add("Roberto");
         nombres.add("Cristina");
+    }
+    
+    /**
+     * Devuelve un string con el valor del palo indicado por parametro.
+     */
+    private String palo(int palo)
+    {
+        String paloQuePinta = "";
+        switch(palo){
+            case 0:
+            paloQuePinta = "oros";
+            break;
+            case 1:
+            paloQuePinta = "copas";
+            break;
+            case 2:
+            paloQuePinta = "espadas";
+            break;
+            case 3:
+            paloQuePinta = "bastos";
+            break;
+        }
+        return paloQuePinta;
+    }
+    
+    /**
+     * Muestra Las cartas del jugador humano.
+     */
+    public void verCartasJugadorHumano()
+    {
+        jugadores[0].verCartasJugador();
     }
 }
