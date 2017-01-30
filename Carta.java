@@ -58,7 +58,7 @@ public class Carta
         }
         return carta;
     }
-    
+
     /**
      * Devuelve el valor de la carta.
      */
@@ -66,7 +66,7 @@ public class Carta
     {
         return valor;
     }
-    
+
     /**
      * Devuelve el valor que corresponde 
      * al palo de la carta;
@@ -74,5 +74,37 @@ public class Carta
     public int getPalo()
     {
         return palo;
+    }
+
+    /**
+     * Gana la primera si son distintos, 
+     * la que pinta si es la que pinta y la mas alta si son del que pinta.
+     */
+    public boolean ganaA(Carta carta, int paloQuePinta)
+    {
+        boolean valorDeRetorno = false;
+        if(carta.getPalo() == paloQuePinta){
+            if(palo != paloQuePinta){
+                valorDeRetorno = true;
+            }else if(palo == paloQuePinta){
+                switch(carta.getValor()){
+                    case 1:
+                    valorDeRetorno = true;
+                    break;
+                    case 3:
+                    if(valor != 1){
+                        valorDeRetorno = true;
+                    }
+                    break;
+                    default:
+                    if(carta.getValor() < valor){
+                        valorDeRetorno = true;
+                    }
+                }
+            }
+        }else{
+            valorDeRetorno = true;
+        }
+        return valorDeRetorno;
     }
 }
