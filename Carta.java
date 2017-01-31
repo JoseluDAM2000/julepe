@@ -77,34 +77,28 @@ public class Carta
     }
 
     /**
-     * Gana la primera si son distintos, 
-     * la que pinta si es la que pinta y la mas alta si son del que pinta.
+     * Recibe una carta por parametro y un entero que indica 
+     * el palo, el metodo devuelve true en caso de que la 
+     * carta sea superior a la carta pasada como parametro.
      */
-    public boolean ganaA(Carta carta, int paloQuePinta)
+    public boolean ganaA(Carta cartaRival, int paloQuePinta)
     {
-        boolean valorDeRetorno = false;
-        if(carta.getPalo() == paloQuePinta){
-            if(palo != paloQuePinta){
-                valorDeRetorno = true;
-            }else if(palo == paloQuePinta){
-                switch(carta.getValor()){
-                    case 1:
-                    valorDeRetorno = true;
-                    break;
-                    case 3:
-                    if(valor != 1){
-                        valorDeRetorno = true;
-                    }
-                    break;
-                    default:
-                    if(carta.getValor() < valor){
-                        valorDeRetorno = true;
-                    }
-                }
+        boolean retorno = true;
+        int[] numeros={0, 12, 1, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int paloRival = cartaRival.getPalo();
+        if(paloQuePinta == palo){
+            if(paloQuePinta == paloRival){
+                retorno = numeros[cartaRival.getValor()] < numeros[valor];
+            }else{
+                retorno = true;
             }
         }else{
-            valorDeRetorno = true;
+            if(palo == paloRival){
+                retorno = numeros[cartaRival.getValor()] < numeros[valor];
+            }else if(paloRival == paloQuePinta){
+                retorno = false;
+            }
         }
-        return valorDeRetorno;
+        return retorno;
     }
 }
