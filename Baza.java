@@ -29,8 +29,9 @@ public class Baza
      */
     public void addCarta(Carta cartaTirada, String nombreJugador)
     {
-        baza[baza.length] = cartaTirada;
-        jugadores[baza.length] = nombreJugador;
+        int index = cartasEnBaza();
+        baza[index] = cartaTirada;
+        jugadores[index] = nombreJugador;
     }
     
     /**
@@ -56,7 +57,7 @@ public class Baza
             cartaQueGana = baza[0];
             for(int i=1; i < baza.length; i++){
                 Carta cartaAspirante = baza[i];
-                if(cartaAspirante.ganaA(cartaQueGana, paloQuePinta)){
+                if(cartaAspirante != null && cartaAspirante.ganaA(cartaQueGana, paloQuePinta)){
                     cartaQueGana = cartaAspirante;
                 }
             }
@@ -80,5 +81,19 @@ public class Baza
             index++;
         }
         return nombreJugador;
+    }
+    
+    /**
+     * Devuelve cuantas cartas hay en la baza.
+     */
+    private int cartasEnBaza()
+    {
+        int contador = 0;
+        for(Carta carta : baza){
+            if(carta != null){
+                contador++;
+            }
+        }
+        return contador;
     }
 }
