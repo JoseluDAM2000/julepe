@@ -86,16 +86,10 @@ public class Carta
         boolean retorno = true;
         int[] numeros={0, 12, 1, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int paloRival = cartaRival.getPalo();
-        if(paloQuePinta == palo){
-            if(paloQuePinta == paloRival){
+        if(palo == paloRival){
                 retorno = numeros[cartaRival.getValor()] < numeros[valor];
-            }else{
-                retorno = true;
-            }
         }else{
-            if(palo == paloRival){
-                retorno = numeros[cartaRival.getValor()] < numeros[valor];
-            }else if(paloRival == paloQuePinta){
+            if(paloRival == paloQuePinta){
                 retorno = false;
             }
         }
