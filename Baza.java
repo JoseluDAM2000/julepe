@@ -26,4 +26,17 @@ public class Baza
     {
         baza.add(cartaTirada);
     }
+    
+    /**
+     * Devuelve el palo de la primera carta tirada 
+     * o -1 en caso de que no haya cartas.
+     */
+    public int getPaloPrimeraCartaDeLaBaza()
+    {
+        int palo = -1;
+        if(baza.size() != 0){
+            palo = baza.get(0).getPalo();
+        }
+        return palo;
+    }
 }
