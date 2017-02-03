@@ -115,4 +115,12 @@ public class Jugador
         }
         return cartaADevolver;
     }
+    
+    /**
+     * Metodo que recibe los parametros necesarios para que el jugador pueda decidir que carta debe tirar.
+     */
+    public Carta tirarCartaInteligentemente(int paloPrimeraCarta, Carta cartaQueVaGanando, int paloQuePinta)
+    {
+        return tirarCartaAleatoria();
+    }
 }
