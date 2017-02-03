@@ -33,8 +33,7 @@ public class BazaV2
      */
     public void addCarta(Carta cartaTirada, String nombreJugador)
     {
-        int index = cartasEnBaza();
-        baza[index] = cartaTirada;
+        baza[cartasEnBaza()] = cartaTirada;
         if(cartaQueGana == null || cartaTirada.ganaA(cartaQueGana, paloQuePinta)){
             cartaQueGana = cartaTirada;
             jugadorQueGana = nombreJugador;
@@ -48,7 +47,7 @@ public class BazaV2
     public int getPaloPrimeraCartaDeLaBaza()
     {
         int palo = -1;
-        if(baza.length != 0){
+        if(baza[0] != null){
             palo = baza[0].getPalo();
         }
         return palo;

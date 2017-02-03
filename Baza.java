@@ -41,7 +41,7 @@ public class Baza
     public int getPaloPrimeraCartaDeLaBaza()
     {
         int palo = -1;
-        if(baza.length != 0){
+        if(baza[0] != null){
             palo = baza[0].getPalo();
         }
         return palo;
@@ -53,11 +53,11 @@ public class Baza
     public Carta cartaQueVaGanandoLaBaza()
     {
         Carta cartaQueGana = null;
-        if(baza.length != 0){
+        if(cartasEnBaza() != 0){
             cartaQueGana = baza[0];
-            for(int i=1; i < baza.length; i++){
+            for(int i=1; i < cartasEnBaza(); i++){
                 Carta cartaAspirante = baza[i];
-                if(cartaAspirante != null && cartaAspirante.ganaA(cartaQueGana, paloQuePinta)){
+                if(cartaAspirante.ganaA(cartaQueGana, paloQuePinta)){
                     cartaQueGana = cartaAspirante;
                 }
             }
@@ -73,7 +73,7 @@ public class Baza
         String nombreJugador = "";
         int index = 0;
         boolean buscando = true;
-        while(index < baza.length && buscando){
+        while(index < cartasEnBaza() && buscando){
             if(baza[index].equals(cartaQueVaGanandoLaBaza())){
                 nombreJugador = jugadores[index];
                 buscando = false;
