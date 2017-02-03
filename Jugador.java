@@ -12,6 +12,10 @@ public class Jugador
     private String nombre;
     // Array que almacena las cartas que tiene el jugador.
     private Carta[] mano;
+    // Array que almacena las bazas que ha ganado el jugador.
+    private Baza[] bazasGanadas;
+    // Atributo que almacena cuantas bazas has ganado.
+    int numeroBazasGanadas;
 
     /**
      * Constructor for objects of class Jugador
@@ -20,6 +24,8 @@ public class Jugador
     {
         this.nombre = nombre;
         mano = new Carta[5];
+        bazasGanadas = new Baza[5];
+        numeroBazasGanadas = 0;
     }
 
     /**
@@ -122,5 +128,22 @@ public class Jugador
     public Carta tirarCartaInteligentemente(int paloPrimeraCarta, Carta cartaQueVaGanando, int paloQuePinta)
     {
         return tirarCartaAleatoria();
+    }
+    
+    /**
+     * Añade la baza obtenida por parametro al array que almacena las bazas ganadas.
+     */
+    public void addBaza(Baza baza)
+    {
+        bazasGanadas[numeroBazasGanadas] = baza;
+        numeroBazasGanadas++;
+    }
+    
+    /**
+     * Devuelve el numero de bazas ganadas.
+     */
+    public int getNumeroBazasGanadas()
+    {
+        return numeroBazasGanadas;
     }
 }
